@@ -1,23 +1,30 @@
-import logo from './logo.svg'
-import './App.css'
+import React, { useEffect, useState, abort } from 'react'
+
+async function getCharacters() {
+    const uri = 'https://dragon-ball-super-api.herokuapp.com/api'
+
+    const res = await fetch(uri, { signal: abort })
+    const data = await res.json()
+
+    console.log(data)
+}
 
 function App() {
+    const [character, getCharacters] = useState(getCharacters())
+
+    useEffect(() => {
+        const abortController = new AbortController()
+
+        getCharacters().then
+
+        return () => {
+            abortController.abort()
+        }
+    }, [])
+
     return (
-        <div className='App'>
-            <header className='App-header'>
-                <img src={logo} className='App-logo' alt='logo' />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className='App-link'
-                    href='https://reactjs.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    Learn React
-                </a>
-            </header>
+        <div>
+            <p>APP{character}</p>
         </div>
     )
 }
