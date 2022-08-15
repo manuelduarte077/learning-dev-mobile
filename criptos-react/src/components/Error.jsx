@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Text = styled.div`
-  background-color: #B7322C;
+  background-color: #b7322c;
   color: #fff;
   padding: 15px;
   font-size: 22px;
@@ -12,10 +12,5 @@ const Text = styled.div`
 `
 
 export const Error = ({children}) => {
-    return (
-        <Text>
-            {children}
-        </Text>
-    )
+  return <Text>{children}</Text>
 }
-
