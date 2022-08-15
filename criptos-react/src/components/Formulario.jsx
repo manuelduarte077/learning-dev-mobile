@@ -26,14 +26,17 @@ const InputSubmit = styled.input`
   }
 `
 
-export const Formulario = () => {
+export const Formulario = ({setMonedas}) => {
   const [cryptos, setCryptos] = useState([])
   const [error, setError] = useState(false)
 
   // Nuestro hooks custom
-  const [moneda, SelectMonedas] = useSelectMonedas('Elije tu Moneda', monedas)
+  const [moneda, SelectMonedas] = useSelectMonedas(
+    'Choose your Currency',
+    monedas
+  )
   const [cryptoMoneda, SelectCryptoMoneda] = useSelectMonedas(
-    'Elije tu CryptoMoneda',
+    'Choose your Cryptocurrency',
     cryptos
   )
 
@@ -46,7 +49,7 @@ export const Formulario = () => {
       const result = await response.json()
 
       const arrayCryptos = result.Data.map((crypto) => {
-        // Creamos un Objeto
+        // We create an object
         return {
           id: crypto.CoinInfo.Name,
           name: crypto.CoinInfo.FullName,
@@ -66,6 +69,11 @@ export const Formulario = () => {
       return
     }
     setError(false)
+
+    setMonedas({
+      moneda,
+      cryptoMoneda,
+    })
   }
 
   return (
