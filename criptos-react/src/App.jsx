@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import ImageCryptocurrencies from './assets/imagen-criptos.png'
 import { Formulario } from './components/Formulario'
 
-// Definir styled components
+// Create styled components
 
 const Container = styled.div`
     max-width: 900px;
