@@ -6,6 +6,7 @@ import useSelectMonedas from '../hooks/useSelectMonedas'
 
 import { monedas } from '../data/monedas'
 import { useEffect } from 'react'
+import { useState } from 'react'
 
 const InputSubmit = styled.input`
     background-color: #9497ff;
@@ -27,19 +28,33 @@ const InputSubmit = styled.input`
 `
 
 export const Formulario = () => {
+    const [cryptos, setCryptos] = useState([])
+
     // Nuestro hooks custom
     const [moneda, SelectMonedas] = useSelectMonedas('Elije tu Moneda', monedas)
+    const [cryptoMoneda, SelectCryptoMoneda] = useSelectMonedas(
+        'Elije tu CryptoMoneda',
+        cryptos
+    )
 
     useEffect(() => {
         const consultAPI = async () => {
             const url =
-                'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD'
+                'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD'
 
             const response = await fetch(url)
-
             const result = await response.json()
 
-            console.log(result.Data)
+            const arrayCryptos = result.Data.map((crypto) => {
+                // Creamos un Objeto
+                const object = {
+                    id: crypto.CoinInfo.Name,
+                    name: crypto.CoinInfo.FullName,
+                }
+
+                return object
+            })
+            setCryptos(arrayCryptos)
         }
         consultAPI()
     }, [])
@@ -47,6 +62,7 @@ export const Formulario = () => {
     return (
         <form>
             <SelectMonedas />
+            <SelectCryptoMoneda />
 
             {moneda}
 
