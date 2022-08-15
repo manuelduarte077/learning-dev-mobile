@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import ImageCryptocurrencies from './assets/imagen-criptos.png'
+import { Formulario } from './components/Formulario'
 
 // Definir styled components
 
@@ -47,6 +48,7 @@ function App() {
 
             <div>
                 <Heading>Trade cryptocurrencies instantly</Heading>
+                <Formulario />
             </div>
         </Container>
     )
