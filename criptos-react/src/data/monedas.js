@@ -3,7 +3,7 @@ const monedas = [
     { id: 'MXN', name: 'Peso Mexicano' },
     { id: 'EUR', name: 'Euro' },
     { id: 'GBP', name: 'Libra Esterlina' },
-    { id: 'NIC', name: 'Cordoba de Nicaragua' },
+    { id: 'NIO', name: 'Cordoba de Nicaragua' },
 ]
 
 export { monedas }

@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 import useSelectMonedas from '../hooks/useSelectMonedas'
 
 import { monedas } from '../data/monedas'
+import { useEffect } from 'react'
 
 const InputSubmit = styled.input`
     background-color: #9497ff;
@@ -28,6 +29,20 @@ const InputSubmit = styled.input`
 export const Formulario = () => {
     // Nuestro hooks custom
     const [moneda, SelectMonedas] = useSelectMonedas('Elije tu Moneda', monedas)
+
+    useEffect(() => {
+        const consultAPI = async () => {
+            const url =
+                'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD'
+
+            const response = await fetch(url)
+
+            const result = await response.json()
+
+            console.log(result.Data)
+        }
+        consultAPI()
+    }, [])
 
     return (
         <form>
