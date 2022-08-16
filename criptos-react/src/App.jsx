@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styled from '@emotion/styled'
 import ImageCryptocurrencies from './assets/imagen-criptos.png'
 import {Formulario} from './components/Formulario'
+import Resultant from './components/Resultant.jsx'
 
 // Create styled components
 
@@ -54,8 +55,6 @@ function App() {
         const response = await fetch(url)
         const result = await response.json()
 
-        console.log(result)
-
         setResultado(result.DISPLAY[cryptoMoneda][moneda])
       }
       cotizarCrypto()
@@ -69,6 +68,8 @@ function App() {
       <div>
         <Heading>Trade cryptocurrencies instantly</Heading>
         <Formulario setMonedas={setMonedas} />
+
+        {resultado.PRICE && <Resultant resultado={resultado} />}
       </div>
     </Container>
   )
