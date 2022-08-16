@@ -1,9 +1,7 @@
+import {AppLetras} from './components/AppLetras'
+
 function App() {
-  return (
-    <div>
-      <p>Hola</p>
-    </div>
-  )
+  return <AppLetras />
 }
 
 export default App
