@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import ImageCryptocurrencies from './assets/imagen-criptos.png'
 import {Formulario} from './components/Formulario'
 import Resultant from './components/Resultant.jsx'
+import Spinner from "./components/Spinner.jsx";
 
 // Create styled components
 
@@ -45,10 +46,14 @@ const Heading = styled.h1`
 function App() {
   const [monedas, setMonedas] = useState({})
   const [resultado, setResultado] = useState({})
+  const [load, setLoad] = useState(false)
 
   useEffect(() => {
     if (Object.keys(monedas).length > 0) {
       const cotizarCrypto = async () => {
+        setLoad(true)
+        setResultado({})
+
         const {moneda, cryptoMoneda} = monedas
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${cryptoMoneda}&tsyms=${moneda}`
 
@@ -56,6 +61,8 @@ function App() {
         const result = await response.json()
 
         setResultado(result.DISPLAY[cryptoMoneda][moneda])
+
+        setLoad(false)
       }
       cotizarCrypto()
     }
@@ -68,6 +75,8 @@ function App() {
       <div>
         <Heading>Trade cryptocurrencies instantly</Heading>
         <Formulario setMonedas={setMonedas} />
+
+        {load && <Spinner />}
 
         {resultado.PRICE && <Resultant resultado={resultado} />}
       </div>
