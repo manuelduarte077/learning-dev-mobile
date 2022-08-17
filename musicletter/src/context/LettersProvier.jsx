@@ -7,8 +7,10 @@ const LettersContext = createContext()
 const LettersProvider = ({children}) => {
   const [alert, setAlert] = useState('')
   const [letter, setLetter] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const letterSearch = async (search) => {
+    setLoading(true)
     try {
       const {artist, song} = search
 
@@ -16,9 +18,11 @@ const LettersProvider = ({children}) => {
 
       const response = await ky(url).json()
       setLetter(response.lyrics)
+      setAlert('')
     } catch (error) {
-      console.log(error)
+      setAlert('Cancion no encontrada')
     }
+    setLoading(true)
   }
 
   return (
@@ -27,6 +31,8 @@ const LettersProvider = ({children}) => {
         alert,
         setAlert,
         letterSearch,
+        letter,
+        loading,
       }}
     >
       {children}

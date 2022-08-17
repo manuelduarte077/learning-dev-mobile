@@ -20,7 +20,6 @@ const Form = () => {
     }
 
     letterSearch(search)
-    setAlert('')
   }
 
   return (
