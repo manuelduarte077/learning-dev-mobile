@@ -1,15 +1,30 @@
 import React from 'react'
 
 import {useState} from 'react'
+import useLetters from '../hooks/useLetter'
 
 const Form = () => {
+  const {setAlert, letterSearch} = useLetters()
+
   const [search, setSearch] = useState({
     artist: '',
     song: '',
   })
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (Object.values(search).includes('')) {
+      setAlert('Name the artist and song insert')
+      return
+    }
+
+    letterSearch(search)
+    setAlert('')
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <legend>Search by Artist and Song</legend>
       <div className="form-grid">
         <div>
