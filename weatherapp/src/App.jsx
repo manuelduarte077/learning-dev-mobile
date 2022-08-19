@@ -1,11 +1,10 @@
 import {useState} from 'react'
+import {AppClima} from './components/AppClima'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div>
-      <p>Hola</p>
+      <AppClima />
     </div>
   )
 }
