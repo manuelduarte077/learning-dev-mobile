@@ -14,7 +14,7 @@ export const Resultado = () => {
       <p>
         {parseInt(main.temp - kelvin)} <span>&#x2103;</span>
       </p>
-      <div className="temp_max_min">
+      <div className="temp_min_max">
         <p>
           Min: {parseInt(main.temp_min - kelvin)}
           <span>&#x2103;</span>
