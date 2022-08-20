@@ -40,7 +40,7 @@ const Formulario = () => {
             <option value="">Seleccione un país</option>
             <option value="US">Estados Unidos</option>
             <option value="MX">Mexico</option>
-            <option value="NIC">Nicaragua</option>
+            <option value="NI">Nicaragua</option>
             <option value="AR">Argentina</option>
             <option value="BR">Brazil</option>
           </select>

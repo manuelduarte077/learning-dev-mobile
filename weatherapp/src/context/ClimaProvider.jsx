@@ -11,6 +11,8 @@ const ClimaProvider = ({children}) => {
     pais: '',
   })
 
+  const [resultado, setResultado] = useState({})
+
   const datosBusqueda = (e) => {
     setBusqueda({
       ...busqueda,
@@ -33,14 +35,16 @@ const ClimaProvider = ({children}) => {
       const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
 
       const clima = await ky.get(urlClima).json()
-      console.log(clima)
+      setResultado(clima)
     } catch (error) {
       console.log(error)
     }
   }
 
   return (
-    <ClimaContext.Provider value={{busqueda, datosBusqueda, consultarClima}}>
+    <ClimaContext.Provider
+      value={{busqueda, datosBusqueda, consultarClima, resultado}}
+    >
       {children}
     </ClimaContext.Provider>
   )
