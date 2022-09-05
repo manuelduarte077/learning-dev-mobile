@@ -1,12 +1,10 @@
+import { View, Text } from 'react-native'
 import React from 'react'
-import { Text, View } from 'react-native'
 
-const HomeScreen = () => {
+export default function FavoriteScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>HomeScreen</Text>
+      <Text>FavoriteScreen</Text>
     </View>
   )
 }
-
-export default HomeScreen
