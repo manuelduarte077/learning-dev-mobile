@@ -1,5 +1,3 @@
-# learning-reactjs
-
 ReactJS Examples
 
 
