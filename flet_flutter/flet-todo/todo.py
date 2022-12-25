@@ -1,5 +1,7 @@
 import flet as ft
 
+from task import Task
+
 
 class TodoApp(ft.UserControl):
 
@@ -25,6 +27,11 @@ class TodoApp(ft.UserControl):
         )
 
     def add_clicked(self, e):
-        self.page.add(ft.Checkbox(label=self.new_task.value))
+        task = Task(self.new_task.value, self.task_delete)
+        self.tasks.controls.append(task)
         self.new_task.value = ""
+        self.update()
+
+    def task_delete(self, task):
+        self.tasks.controls.remove(task)
         self.update()
