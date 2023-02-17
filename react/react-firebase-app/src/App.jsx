@@ -4,14 +4,18 @@ import { Home } from "./components/Home";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
 
+import { AuthProvider } from "./contexts/AuthContext";
+
 export default function App() {
   return (
     <div className="bg-slate-300 h-screen text-white flex">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }
