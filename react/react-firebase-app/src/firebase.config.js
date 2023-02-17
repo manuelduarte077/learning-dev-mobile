@@ -11,9 +11,9 @@ const firebaseConfig = {
   projectId: "react-fb-auth-acab6",
   storageBucket: "react-fb-auth-acab6.appspot.com",
   messagingSenderId: "241695223594",
-  appId: "1:241695223594:web:b9518cbb73a3e15a837853"
+  appId: "1:241695223594:web:b9518cbb73a3e15a837853",
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
