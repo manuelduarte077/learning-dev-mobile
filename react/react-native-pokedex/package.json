@@ -5,6 +5,8 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "fix": "eslint --fix \"**/*.{ts,tsx}\"",
+    "format": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
@@ -16,7 +18,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@react-native-community/eslint-config": "3.2.0",
     "@types/react": "~18.0.14",
+    "eslint": "8.35.0",
+    "prettier": "2.8.4",
     "typescript": "^4.9.4"
   },
   "private": true
