@@ -1,9 +1,9 @@
-import { useAtuh } from "../contexts/AuthContext";
+import {useAtuh} from '../contexts/AuthContext'
 
 export function Home() {
-  const { user } = useAtuh();
+  const {user} = useAtuh()
 
-  console.log(user);
+  console.log(user)
 
-  return <div>Home</div>;
+  return <div>Home</div>
 }

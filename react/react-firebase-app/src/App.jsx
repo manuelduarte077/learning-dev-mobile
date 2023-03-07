@@ -1,10 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route} from 'react-router-dom'
 
-import { Home } from "./components/Home";
-import { Register } from "./components/Register";
-import { Login } from "./components/Login";
-
-import { AuthProvider } from "./contexts/AuthContext";
+import {Home} from './components/Home'
+import {Login} from './components/Login'
+import {Register} from './components/Register'
+import {AuthProvider} from './contexts/AuthContext'
 
 export default function App() {
   return (
@@ -17,5 +16,5 @@ export default function App() {
         </Routes>
       </AuthProvider>
     </div>
-  );
+  )
 }

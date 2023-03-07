@@ -1,42 +1,42 @@
-import { useState } from "react";
-import { useAtuh } from "../contexts/AuthContext";
+import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
-import { useNavigate } from "react-router-dom";
+import {useAtuh} from '../contexts/AuthContext'
 
 export function Register() {
   const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+    email: '',
+    password: '',
+  })
 
   /// Vamos usar el useAtuh para poder usar el signup
-  const { signup } = useAtuh();
+  const {signup} = useAtuh()
 
   /// Vamos a usar el useNavigate para poder navegar a la ruta de login
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   /// Guardar los errores para msotrarlos en el formulario
-  const [error, setError] = useState();
+  const [error, setError] = useState()
 
   /// Azualiza el estado del formulario
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = ({target: {name, value}}) => {
     setUser({
       ...user,
       [name]: value,
-    });
-  };
+    })
+  }
 
   /// Ver el resultado del formulario
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+    e.preventDefault()
+    setError('')
     try {
-      await signup(user.email, user.password);
-      navigate("/");
+      await signup(user.email, user.password)
+      navigate('/')
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     }
-  };
+  }
 
   return (
     // Formulario de registro
@@ -65,5 +65,5 @@ export function Register() {
         <button type="submit">Register</button>
       </form>
     </div>
-  );
+  )
 }

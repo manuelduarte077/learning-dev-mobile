@@ -1,3 +1,3 @@
 export function Alert() {
-  return <div>Alert</div>;
+  return <div>Alert</div>
 }

@@ -1,0 +1,39 @@
+{
+    "extends": [
+        "react-app",
+        "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "jsx-a11y"
+    ],
+    "rules": {
+        "import/order": [
+            "warn",
+            {
+                "alphabetize": {
+                    "caseInsensitive": true,
+                    "order": "asc"
+                },
+                "groups": [
+                    "external",
+                    "internal"
+                ],
+                "newlines-between": "always",
+                "pathGroups": [
+                    {
+                        "pattern": "@**/**",
+                        "group": "external",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "#/**",
+                        "group": "internal"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": []
+            }
+        ],
+        "no-constant-binary-expression": "error"
+    }
+}
