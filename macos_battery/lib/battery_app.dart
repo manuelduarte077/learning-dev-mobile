@@ -1,3 +1,4 @@
+import 'package:dynamic_app_icon/dynamic_app_icon.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
@@ -11,7 +12,10 @@ class BatteryApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const AppIcon(
+        icon: FlutterLogo(),
+        child: HomeScreen(),
+      ),
     );
   }
 }
