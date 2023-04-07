@@ -1,0 +1,232 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Character {
+    bio: JSON!
+    chronologicalInformation: JSON!
+    id: ID!
+    image: String!
+    name: String
+    personalInformation: JSON!
+    physicalDescription: JSON!
+    politicalInformation: JSON!
+}
+
+type Episode {
+    AnimatedBy: String!
+    DirectedBy: String!
+    NumInSeason: String!
+    OriginalAirDate: String!
+    ProductionCode: String!
+    Season: String!
+    Title: String!
+    Viewers: String
+    WrittenBy: [String]!
+    id: ID!
+}
+
+type Info {
+    creators: JSON!
+    genres: [String]!
+    id: ID!
+    synopsis: String!
+    yearsAired: String!
+}
+
+type ListMetadata {
+    count: Int
+}
+
+type MetaDatum {
+    categories: [String]!
+    desc: String!
+    featured: Boolean!
+    longDesc: String!
+    title: String!
+}
+
+type Mutation {
+    createCharacter(bio: JSON!, chronologicalInformation: JSON!, image: String!, name: String, personalInformation: JSON!, physicalDescription: JSON!, politicalInformation: JSON!): Character
+    createEpisode(AnimatedBy: String!, DirectedBy: String!, NumInSeason: String!, OriginalAirDate: String!, ProductionCode: String!, Season: String!, Title: String!, Viewers: String, WrittenBy: [String]!): Episode
+    createInfo(creators: JSON!, genres: [String]!, synopsis: String!, yearsAired: String!): Info
+    createManyCharacter(data: [CharacterInput]): [Character]
+    createManyEpisode(data: [EpisodeInput]): [Episode]
+    createManyInfo(data: [InfoInput]): [Info]
+    createManyMetaDatum(data: [MetaDatumInput]): [MetaDatum]
+    createManyQuestion(data: [QuestionInput]): [Question]
+    createMetaDatum(categories: [String]!, desc: String!, featured: Boolean!, longDesc: String!, title: String!): MetaDatum
+    createQuestion(correctAnswer: String!, possibleAnsers: [String]!, question: String!): Question
+    removeCharacter(id: ID!): Character
+    removeEpisode(id: ID!): Episode
+    removeInfo(id: ID!): Info
+    removeMetaDatum(id: ID!): MetaDatum
+    removeQuestion(id: ID!): Question
+    updateCharacter(bio: JSON, chronologicalInformation: JSON, id: ID!, image: String, name: String, personalInformation: JSON, physicalDescription: JSON, politicalInformation: JSON): Character
+    updateEpisode(AnimatedBy: String, DirectedBy: String, NumInSeason: String, OriginalAirDate: String, ProductionCode: String, Season: String, Title: String, Viewers: String, WrittenBy: [String], id: ID!): Episode
+    updateInfo(creators: JSON, genres: [String], id: ID!, synopsis: String, yearsAired: String): Info
+    updateMetaDatum(categories: [String], desc: String, featured: Boolean, longDesc: String, title: String): MetaDatum
+    updateQuestion(correctAnswer: String, id: ID!, possibleAnsers: [String], question: String): Question
+}
+
+type Query {
+    Character(id: ID!): Character
+    Episode(id: ID!): Episode
+    Info(id: ID!): Info
+    MetaDatum(id: ID!): MetaDatum
+    Question(id: ID!): Question
+    _allCharactersMeta(filter: CharacterFilter, page: Int, perPage: Int): ListMetadata
+    _allEpisodesMeta(filter: EpisodeFilter, page: Int, perPage: Int): ListMetadata
+    _allInfosMeta(filter: InfoFilter, page: Int, perPage: Int): ListMetadata
+    _allMetaDataMeta(filter: MetaDatumFilter, page: Int, perPage: Int): ListMetadata
+    _allQuestionsMeta(filter: QuestionFilter, page: Int, perPage: Int): ListMetadata
+    allCharacters(filter: CharacterFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [Character]
+    allEpisodes(filter: EpisodeFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [Episode]
+    allInfos(filter: InfoFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [Info]
+    allMetaData(filter: MetaDatumFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [MetaDatum]
+    allQuestions(filter: QuestionFilter, page: Int, perPage: Int, sortField: String, sortOrder: String): [Question]
+}
+
+type Question {
+    correctAnswer: String!
+    id: ID!
+    possibleAnsers: [String]!
+    question: String!
+}
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON
+
+input CharacterFilter {
+    bio: JSON
+    bio_neq: JSON
+    chronologicalInformation: JSON
+    chronologicalInformation_neq: JSON
+    id: ID
+    id_neq: ID
+    ids: [ID]
+    image: String
+    image_neq: String
+    name: String
+    name_neq: String
+    personalInformation: JSON
+    personalInformation_neq: JSON
+    physicalDescription: JSON
+    physicalDescription_neq: JSON
+    politicalInformation: JSON
+    politicalInformation_neq: JSON
+    q: String
+}
+
+input CharacterInput {
+    bio: JSON!
+    chronologicalInformation: JSON!
+    image: String!
+    name: String
+    personalInformation: JSON!
+    physicalDescription: JSON!
+    politicalInformation: JSON!
+}
+
+input EpisodeFilter {
+    AnimatedBy: String
+    AnimatedBy_neq: String
+    DirectedBy: String
+    DirectedBy_neq: String
+    NumInSeason: String
+    NumInSeason_neq: String
+    OriginalAirDate: String
+    OriginalAirDate_neq: String
+    ProductionCode: String
+    ProductionCode_neq: String
+    Season: String
+    Season_neq: String
+    Title: String
+    Title_neq: String
+    Viewers: String
+    Viewers_neq: String
+    WrittenBy: [String]
+    WrittenBy_neq: [String]
+    id: ID
+    id_neq: ID
+    ids: [ID]
+    q: String
+}
+
+input EpisodeInput {
+    AnimatedBy: String!
+    DirectedBy: String!
+    NumInSeason: String!
+    OriginalAirDate: String!
+    ProductionCode: String!
+    Season: String!
+    Title: String!
+    Viewers: String
+    WrittenBy: [String]!
+}
+
+input InfoFilter {
+    creators: JSON
+    creators_neq: JSON
+    genres: [String]
+    genres_neq: [String]
+    id: ID
+    id_neq: ID
+    ids: [ID]
+    q: String
+    synopsis: String
+    synopsis_neq: String
+    yearsAired: String
+    yearsAired_neq: String
+}
+
+input InfoInput {
+    creators: JSON!
+    genres: [String]!
+    synopsis: String!
+    yearsAired: String!
+}
+
+input MetaDatumFilter {
+    categories: [String]
+    categories_neq: [String]
+    desc: String
+    desc_neq: String
+    featured: Boolean
+    ids: [ID]
+    longDesc: String
+    longDesc_neq: String
+    q: String
+    title: String
+    title_neq: String
+}
+
+input MetaDatumInput {
+    categories: [String]!
+    desc: String!
+    featured: Boolean!
+    longDesc: String!
+    title: String!
+}
+
+input QuestionFilter {
+    correctAnswer: String
+    correctAnswer_neq: String
+    id: ID
+    id_neq: ID
+    ids: [ID]
+    possibleAnsers: [String]
+    possibleAnsers_neq: [String]
+    q: String
+    question: String
+    question_neq: String
+}
+
+input QuestionInput {
+    correctAnswer: String!
+    possibleAnsers: [String]!
+    question: String!
+}

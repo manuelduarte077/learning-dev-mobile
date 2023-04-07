@@ -1,0 +1,7 @@
+query AvatarCharacters {
+  allCharacters {
+    name
+    image
+    bio
+  }
+}
