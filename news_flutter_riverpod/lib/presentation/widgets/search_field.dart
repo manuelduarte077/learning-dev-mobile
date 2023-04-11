@@ -9,7 +9,7 @@ class SearchField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Debouncer debouncer = Debouncer();
+    Debounced debounced = Debounced();
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -24,7 +24,7 @@ class SearchField extends ConsumerWidget {
       ),
       child: TextField(
         onChanged: (value) {
-          debouncer.run(() {
+          debounced.run(() {
             if (value.isNotEmpty) {
               ref.read(newsProvider.notifier).loadSearchedNews(value);
             } else {
@@ -49,12 +49,12 @@ class SearchField extends ConsumerWidget {
   }
 }
 
-class Debouncer {
+class Debounced {
   final int milliseconds;
 
   Timer? _timer;
 
-  Debouncer({this.milliseconds = 500});
+  Debounced({this.milliseconds = 500});
 
   run(VoidCallback action) {
     if (null != _timer) {
