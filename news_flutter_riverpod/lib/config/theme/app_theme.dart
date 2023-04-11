@@ -13,7 +13,7 @@ class AppTheme {
         ///* Texts
         textTheme: TextTheme(
           titleLarge: GoogleFonts.montserratAlternates()
-              .copyWith(fontSize: 40, fontWeight: FontWeight.bold),
+              .copyWith(fontSize: 30, fontWeight: FontWeight.bold),
           titleMedium: GoogleFonts.montserratAlternates()
               .copyWith(fontSize: 30, fontWeight: FontWeight.bold),
           titleSmall: GoogleFonts.montserratAlternates().copyWith(fontSize: 20),
@@ -36,7 +36,7 @@ class AppTheme {
         appBarTheme: AppBarTheme(
           color: scaffoldBackgroundColor,
           titleTextStyle: GoogleFonts.montserratAlternates().copyWith(
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
