@@ -41,10 +41,19 @@ class ArticleScreen extends ConsumerWidget {
                   itemCount: news.articles!.length,
                   itemBuilder: (context, index) {
                     final article = news.articles![index];
-                    return NewsCard(
-                      author: article.author,
-                      title: article.title,
-                      urlToImage: article.urlToImage,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          'news_details_screen',
+                          arguments: article,
+                        );
+                      },
+                      child: NewsCard(
+                        author: article.author,
+                        title: article.title,
+                        urlToImage: article.urlToImage,
+                      ),
                     );
                   },
                 ),

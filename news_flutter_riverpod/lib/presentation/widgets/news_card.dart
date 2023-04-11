@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_flutter_riverpod/config/constants/image_not_found.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class NewsCard extends StatelessWidget {
   final String? title;
@@ -17,6 +17,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -56,21 +57,29 @@ class NewsCard extends StatelessWidget {
                 style: textTheme.bodyMedium,
                 maxLines: 2,
               ),
-              subtitle: Text(
-                strutStyle: const StrutStyle(
-                  forceStrutHeight: true,
-                  height: 1.5,
-                ),
-                author.toString(),
-                style: textTheme.bodySmall?.copyWith(
-                  color: Colors.grey,
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.person,
+                      size: 15,
+                    ),
+                    const SizedBox(width: 5),
+                    Expanded(
+                      child: Text(
+                        author.toString(),
+                        style: textTheme.bodySmall,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.black,
               ),
-              contentPadding: EdgeInsets.zero,
+              contentPadding: EdgeInsets.zero
             ),
           )
         ],
