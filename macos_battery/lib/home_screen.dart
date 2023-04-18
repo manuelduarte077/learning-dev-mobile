@@ -29,7 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text('Battery level: $_batteryLevel%'),
                 const SizedBox(height: 20),
-                ElevatedButton(
+                FilledButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
                   onPressed: () async {
                     double batteryLevel =
                         await DeviceBatteryChannel.getBatteryLevel();
@@ -37,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       _batteryLevel = batteryLevel;
                     });
                   },
-                  child: const Text('Get battery level'),
+                  label: const Text('Get battery level'),
+                  icon: const Icon(Icons.battery_full),
                 ),
               ],
             ),
@@ -46,7 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text('Is battery charging: $_isBatteryCharging'),
                 const SizedBox(height: 20),
-                ElevatedButton(
+                FilledButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                  ),
                   onPressed: () async {
                     bool isBatteryCharging =
                         await DeviceBatteryChannel.isBatteryCharging();
@@ -54,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       _isBatteryCharging = isBatteryCharging;
                     });
                   },
-                  child: const Text('Is battery charging?'),
+                  label: const Text('Is battery charging?'),
+                  icon: const Icon(Icons.battery_charging_full),
                 ),
               ],
             ),
@@ -63,7 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text('Time left: $_timeLeft'),
                 const SizedBox(height: 20),
-                ElevatedButton(
+                FilledButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
                   onPressed: () async {
                     String timeLeft =
                         await DeviceBatteryChannel.getBatteryTimeLeft();
@@ -71,7 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       _timeLeft = timeLeft;
                     });
                   },
-                  child: const Text('Get battery time left'),
+                  label: const Text('Get battery time left'),
+                  icon: const Icon(Icons.timer),
                 ),
               ],
             ),
