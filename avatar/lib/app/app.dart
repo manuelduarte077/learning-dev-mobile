@@ -1,26 +1,17 @@
-import 'package:avatar/features/presentation/screens/avatar_screen.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AvatarApp extends StatelessWidget {
+  const AvatarApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      scrollBehavior: _CustomScrollBehavior(),
-      theme: ThemeData(
-        useMaterial3: true,
+    return const CupertinoApp(
+      title: 'Avatar',
+      home: CupertinoPageScaffold(
+        child: Center(
+          child: Text('Avatar'),
+        ),
       ),
-      home: const AvatarScreen(),
     );
   }
-}
-
-class _CustomScrollBehavior extends MaterialScrollBehavior {
-  @override
-  Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-      };
 }

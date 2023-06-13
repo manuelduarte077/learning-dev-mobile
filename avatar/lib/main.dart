@@ -1,17 +1,7 @@
-import 'package:avatar/features/presentation/screens/avatar_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:avatar/app/app.dart';
+import 'package:flutter/cupertino.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const AvatarApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: AvatarScreen(),
-      ),
-    );
-  }
-}
+
