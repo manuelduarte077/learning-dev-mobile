@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class EpisodesScreen extends StatelessWidget {
+class EpisodesScreen extends StatefulWidget {
   const EpisodesScreen({super.key});
 
+  @override
+  State<EpisodesScreen> createState() => _EpisodesScreenState();
+}
+
+class _EpisodesScreenState extends State<EpisodesScreen> {
   @override
   Widget build(BuildContext context) {
     return const CupertinoPageScaffold(
