@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/characters',
+      path: '/character',
       builder: (context, state) {
         return const CharacterDetailsScreen();
       },
