@@ -12,11 +12,31 @@ class CharacterScreen extends StatefulWidget {
 }
 
 class _CharacterScreenState extends State<CharacterScreen> {
+  final scrollController = ScrollController();
+  bool isLoading = false;
+  int page = 1;
+
   @override
   void initState() {
     super.initState();
     final apiProvider = Provider.of<ApiProvider>(context, listen: false);
-    apiProvider.getCharacteres();
+    apiProvider.getCharacteres(page);
+
+    scrollController.addListener(() async {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        setState(() {
+          isLoading = true;
+        });
+
+        page++;
+        await apiProvider.getCharacteres(page);
+
+        setState(() {
+          isLoading = false;
+        });
+      }
+    });
   }
 
   @override
@@ -35,7 +55,11 @@ class _CharacterScreenState extends State<CharacterScreen> {
                 if (apiProvider.characters.isEmpty)
                   const Center(child: CupertinoActivityIndicator())
                 else
-                  RickMortyWidget(apiProvider: apiProvider),
+                  RickMortyWidget(
+                    apiProvider: apiProvider,
+                    isLoading: isLoading,
+                    scrollController: scrollController,
+                  ),
               ],
             ),
           )
@@ -46,14 +70,21 @@ class _CharacterScreenState extends State<CharacterScreen> {
 }
 
 class RickMortyWidget extends StatelessWidget {
-  const RickMortyWidget({super.key, required this.apiProvider});
+  const RickMortyWidget({
+    super.key,
+    required this.apiProvider,
+    required this.scrollController,
+    required this.isLoading,
+  });
 
   final ApiProvider apiProvider;
+  final ScrollController scrollController;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: const EdgeInsets.only(right: 16, left: 16),
       child: Column(
         children: [
           const CupertinoSearchTextField(
@@ -61,74 +92,84 @@ class RickMortyWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ListView.builder(
+            controller: scrollController,
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: apiProvider.characters.length,
+            itemCount: isLoading
+                ? apiProvider.characters.length + 2
+                : apiProvider.characters.length,
             itemBuilder: (context, index) {
-              final character = apiProvider.characters[index];
+              if (index < apiProvider.characters.length) {
+                final character = apiProvider.characters[index];
 
-              return GestureDetector(
-                onTap: () {
-                  context.push('/character');
-                },
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  margin: const EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    color: CupertinoColors.activeGreen,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    children: [
-                      const FlutterLogo(size: 80),
-                      const SizedBox(width: 10),
-
-                      Column(
-                        children: [
-                          Text(
-                            character.name ?? '',
-                            style: const TextStyle(
-                              color: CupertinoColors.black,
-                            ),
-                          ),
-                          Text(
-                            character.gender ?? '',
-                            style: const TextStyle(
-                              color: CupertinoColors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      SizedBox(
-                        width: 80,
-                        height: 100,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: CupertinoColors.activeBlue,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                              character.status ?? '',
+                return GestureDetector(
+                  onTap: () {
+                    context.push('/character');
+                  },
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                      color: CupertinoColors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        FadeInImage.assetNetwork(
+                          placeholder: 'assets/images/placeholder.gif',
+                          image: character.image ?? '',
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 20),
+                            Text(
+                              character.name ?? '',
                               style: const TextStyle(
-                                fontSize: 12,
+                                color: CupertinoColors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              character.gender ?? '',
+                              style: const TextStyle(
+                                color: CupertinoColors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        SizedBox(
+                          width: 80,
+                          height: 100,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: character.status!.contains('Alive')
+                                  ? CupertinoColors.activeGreen
+                                  : CupertinoColors.systemRed,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Center(
+                              child: Text(
+                                character.status ?? '',
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-
-                      // FadeInImage.assetNetwork(
-                      //   placeholder: 'assets/images/placeholder.png',
-                      //   image: character.image ?? '',
-                      // ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
+                );
+              } else {
+                return const CupertinoActivityIndicator();
+              }
             },
           ),
         ],

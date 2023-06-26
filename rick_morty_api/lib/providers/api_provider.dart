@@ -9,8 +9,10 @@ class ApiProvider with ChangeNotifier {
   List<Character> characters = [];
 
   /// Character List
-  Future<void> getCharacteres() async {
-    final result = await http.get(Uri.https(url, "/api/character"));
+  Future<void> getCharacteres(int page) async {
+    final result = await http.get(
+      Uri.https(url, "/api/character", {'page': page.toString()}),
+    );
 
     final response = characterModelFromJson(result.body);
 

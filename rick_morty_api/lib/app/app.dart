@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
               color: CupertinoColors.black,
               fontSize: 16,
               fontFamily: 'Rubik',
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
