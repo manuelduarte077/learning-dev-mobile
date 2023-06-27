@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:rick_morty_api/features/character/character_details_screen.dart';
 import 'package:rick_morty_api/features/home_screen.dart';
+import 'package:rick_morty_api/features/character/model/character_model.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/home/0',
@@ -16,7 +17,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/character',
       builder: (context, state) {
-        return const CharacterDetailsScreen();
+        final character = state.extra as Character;
+        return CharacterDetailsScreen(
+          character: character,
+        );
       },
     ),
   ],

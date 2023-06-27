@@ -110,7 +110,7 @@ class RickMortyWidget extends StatelessWidget {
 
                 return GestureDetector(
                   onTap: () {
-                    context.push('/character');
+                    context.push('/character', extra: character);
                   },
                   child: Container(
                     height: 120,
@@ -122,9 +122,12 @@ class RickMortyWidget extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        FadeInImage.assetNetwork(
-                          placeholder: 'assets/images/placeholder.gif',
-                          image: character.image ?? '',
+                        Hero(
+                          tag: character.id ?? '',
+                          child: FadeInImage.assetNetwork(
+                            placeholder: 'assets/images/placeholder.gif',
+                            image: character.image ?? '',
+                          ),
                         ),
                         const SizedBox(width: 10),
                         Expanded(
@@ -142,14 +145,16 @@ class RickMortyWidget extends StatelessWidget {
                               Text(
                                 character.gender ?? '',
                                 style: const TextStyle(
-                                    color: CupertinoColors.black, fontSize: 14),
+                                  color: CupertinoColors.systemGrey,
+                                  fontSize: 14,
+                                ),
                               ),
                             ],
                           ),
                         ),
                         const Spacer(),
                         SizedBox(
-                          width: 80,
+                          width: 100,
                           height: 120,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
