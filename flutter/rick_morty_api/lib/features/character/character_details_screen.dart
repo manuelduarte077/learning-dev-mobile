@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty_api/features/character/model/character_model.dart';
-import 'package:rick_morty_api/providers/api_provider.dart';
+import 'package:rick_morty_api/features/character/provider/api_provider.dart';
 
 class CharacterDetailsScreen extends StatelessWidget {
   final Character character;

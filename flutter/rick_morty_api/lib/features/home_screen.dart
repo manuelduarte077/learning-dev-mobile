@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rick_morty_api/features/character/character_screen.dart';
-import 'package:rick_morty_api/features/episodes_screen.dart';
+import 'package:rick_morty_api/features/episodes/episodes_screen.dart';
 import 'package:rick_morty_api/features/locations_screen.dart';
 
 class HomeScreen extends StatefulWidget {
