@@ -48,6 +48,12 @@ class _CharacterScreenState extends State<CharacterScreen> {
         slivers: [
           const CupertinoSliverNavigationBar(
             largeTitle: Text('Characters'),
+            border: Border(
+              bottom: BorderSide(
+                color: CupertinoColors.systemGrey,
+                width: 0.5,
+              ),
+            ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -87,9 +93,8 @@ class RickMortyWidget extends StatelessWidget {
       padding: const EdgeInsets.only(right: 16, left: 16),
       child: Column(
         children: [
-          const CupertinoSearchTextField(
-            placeholder: 'Search',
-          ),
+          const SizedBox(height: 16),
+          const CupertinoSearchTextField(placeholder: 'Search'),
           const SizedBox(height: 16),
           ListView.builder(
             controller: scrollController,
@@ -108,43 +113,44 @@ class RickMortyWidget extends StatelessWidget {
                     context.push('/character');
                   },
                   child: Container(
-                    height: 100,
-                    width: 100,
+                    height: 120,
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                       color: CupertinoColors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FadeInImage.assetNetwork(
                           placeholder: 'assets/images/placeholder.gif',
                           image: character.image ?? '',
                         ),
                         const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 20),
-                            Text(
-                              character.name ?? '',
-                              style: const TextStyle(
-                                color: CupertinoColors.black,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 20),
+                              Text(
+                                character.name ?? '',
+                                style: const TextStyle(
+                                  color: CupertinoColors.black,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              character.gender ?? '',
-                              style: const TextStyle(
-                                color: CupertinoColors.black,
+                              const SizedBox(height: 10),
+                              Text(
+                                character.gender ?? '',
+                                style: const TextStyle(
+                                    color: CupertinoColors.black, fontSize: 14),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         const Spacer(),
                         SizedBox(
                           width: 80,
-                          height: 100,
+                          height: 120,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                               color: character.status!.contains('Alive')

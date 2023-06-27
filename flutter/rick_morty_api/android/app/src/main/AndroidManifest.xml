@@ -1,10 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:label="rick_morty_api"
+        android:label="Rick Morty"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
-        <uses-permission android:name="android.permission.INTERNET" />
 
         <activity
             android:name=".MainActivity"
