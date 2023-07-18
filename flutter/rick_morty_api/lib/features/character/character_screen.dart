@@ -93,11 +93,13 @@ class RickMortyWidget extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 16),
-          const CupertinoSearchTextField(placeholder: 'Search'),
+          const CupertinoSearchTextField(
+            placeholder: 'Search',
+          ),
           const SizedBox(height: 16),
           ListView.builder(
             controller: scrollController,
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.only(bottom: 100),
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: isLoading
@@ -114,10 +116,6 @@ class RickMortyWidget extends StatelessWidget {
                   child: Container(
                     height: 120,
                     margin: const EdgeInsets.only(bottom: 10),
-                    decoration: BoxDecoration(
-                      color: CupertinoColors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -129,10 +127,16 @@ class RickMortyWidget extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: ColoredBox(
-                            color: character.status!.contains('Alive')
-                                ? CupertinoColors.activeGreen
-                                : CupertinoColors.destructiveRed,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: character.status!.contains('Alive')
+                                  ? CupertinoColors.activeGreen
+                                  : CupertinoColors.destructiveRed,
+                              borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8),
                               child: Column(

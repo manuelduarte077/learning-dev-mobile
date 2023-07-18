@@ -11,14 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: AppTheme().getTheme(),
-
       home: const NewsScreen(),
       initialRoute: 'news_screen',
       routes: {
         'news_screen': (context) => const NewsScreen(),
-        'news_details_screen': (context) =>  NewsDetailsScreen(
-            article: ModalRoute.of(context)!.settings.arguments as Article
-        ),
+        'news_details_screen': (context) => NewsDetailsScreen(
+            article: ModalRoute.of(context)!.settings.arguments as Article),
       },
     );
   }
