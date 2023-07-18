@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty_api/features/character/provider/api_provider.dart';
@@ -129,47 +128,33 @@ class RickMortyWidget extends StatelessWidget {
                             image: character.image ?? '',
                           ),
                         ),
-                        const SizedBox(width: 10),
                         Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 20),
-                              Text(
-                                character.name ?? '',
-                                style: const TextStyle(
-                                  color: CupertinoColors.black,
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              Text(
-                                character.gender ?? '',
-                                style: const TextStyle(
-                                  color: CupertinoColors.systemGrey,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                          width: 100,
-                          height: 120,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: character.status!.contains('Alive')
-                                  ? CupertinoColors.activeGreen
-                                  : CupertinoColors.systemRed,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Text(
-                                character.status ?? '',
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                ),
+                          child: ColoredBox(
+                            color: character.status!.contains('Alive')
+                                ? CupertinoColors.activeGreen
+                                : CupertinoColors.destructiveRed,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    character.name ?? '',
+                                    style: const TextStyle(
+                                      color: CupertinoColors.white,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    character.gender ?? '',
+                                    style: const TextStyle(
+                                      color: CupertinoColors.darkBackgroundGray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
