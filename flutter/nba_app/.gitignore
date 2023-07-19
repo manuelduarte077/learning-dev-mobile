@@ -4,6 +4,9 @@
 windows
 linux
 
+# ENV
+.env
+
 # Miscellaneous
 *.class
 *.log
