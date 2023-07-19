@@ -93,8 +93,15 @@ class RickMortyWidget extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 16),
-          const CupertinoSearchTextField(
+          CupertinoSearchTextField(
             placeholder: 'Search',
+            onChanged: (value) {
+              apiProvider.searchCharacter(value);
+            },
+            onSubmitted: (value) {
+              apiProvider.searchCharacter(value);
+            },
+            autocorrect: false,
           ),
           const SizedBox(height: 16),
           ListView.builder(

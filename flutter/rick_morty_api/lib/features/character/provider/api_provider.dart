@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:rick_morty_api/features/character/model/character_model.dart';
-
 import 'package:http/http.dart' as http;
+import 'package:rick_morty_api/features/character/model/character_model.dart';
 import 'package:rick_morty_api/models/episode.dart';
 
 class ApiProvider with ChangeNotifier {
@@ -9,6 +8,7 @@ class ApiProvider with ChangeNotifier {
 
   List<Character> characters = [];
   List<Episode> episodes = [];
+
 
   /// Character List
   Future<void> getCharacteres(int page) async {
@@ -21,6 +21,19 @@ class ApiProvider with ChangeNotifier {
     characters.addAll(response.results!);
     notifyListeners();
   }
+
+  /// Search Character
+  Future<void> searchCharacter(String query) async {
+    final result = await http.get(
+      Uri.https(url, "/api/character", {'name': query}),
+    );
+
+    final response = characterModelFromJson(result.body);
+
+    characters = response.results!;
+    notifyListeners();
+  }
+
 
   ///
   Future<List<Episode>> getEpisodes(Character character) async {
