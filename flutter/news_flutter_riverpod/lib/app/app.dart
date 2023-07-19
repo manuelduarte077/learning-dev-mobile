@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'news_screen': (context) => const NewsScreen(),
         'news_details_screen': (context) => NewsDetailsScreen(
-            article: ModalRoute.of(context)!.settings.arguments as Article),
+              article: ModalRoute.of(context)!.settings.arguments as Article,
+            ),
       },
     );
   }

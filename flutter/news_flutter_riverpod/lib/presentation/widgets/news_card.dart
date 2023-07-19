@@ -17,7 +17,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    
+
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -52,35 +52,34 @@ class NewsCard extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: ListTile(
-              title: Text(
-                title.toString(),
-                style: textTheme.bodyMedium,
-                maxLines: 2,
-              ),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.person,
-                      size: 15,
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        author.toString(),
-                        style: textTheme.bodySmall,
-                      ),
-                    ),
-                  ],
+                title: Text(
+                  title.toString(),
+                  style: textTheme.bodyMedium,
+                  maxLines: 2,
                 ),
-              ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.black,
-              ),
-              contentPadding: EdgeInsets.zero
-            ),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.person,
+                        size: 15,
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Text(
+                          author.toString(),
+                          style: textTheme.bodySmall,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.black,
+                ),
+                contentPadding: EdgeInsets.zero),
           )
         ],
       ),
