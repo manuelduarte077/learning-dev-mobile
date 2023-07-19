@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nba_app/config/theme/app_theme.dart';
+import 'package:nba_app/players/screens/players_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,14 +9,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      theme: AppTheme().getTheme(),
+      home: const PlayersScren(),
+      initialRoute: 'players',
+      routes: {
+        'players': (context) => const PlayersScren(),
+      },
     );
   }
 }
