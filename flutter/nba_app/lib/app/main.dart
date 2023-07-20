@@ -8,7 +8,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
       theme: AppTheme().getTheme(),
       home: const PlayersScren(),
       initialRoute: 'players',

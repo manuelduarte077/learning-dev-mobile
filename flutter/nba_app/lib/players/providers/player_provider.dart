@@ -15,7 +15,9 @@ class PlayerNotifier extends StateNotifier<PlayerState> {
   PlayerNotifier()
       : super(
           PlayerState(player: PlayersModel(player: [])),
-        );
+        ) {
+    loadPlayers();
+  }
 
   /// load all players
   loadPlayers() async {
@@ -23,6 +25,7 @@ class PlayerNotifier extends StateNotifier<PlayerState> {
     final playersResponse = await PlayerService().getAllPlayers();
 
     final players = PlayersModel.fromJson(playersResponse);
+    print(players.player!.length);
     state = state.copyWith(player: players, isLoading: false);
   }
 
@@ -33,6 +36,8 @@ class PlayerNotifier extends StateNotifier<PlayerState> {
     final playersResponse = await PlayerService().getPlayersBySearch(name);
 
     final players = PlayersModel.fromJson(playersResponse);
+
+    print(players.player!.length);
     state = state.copyWith(player: players, isLoading: false);
   }
 }

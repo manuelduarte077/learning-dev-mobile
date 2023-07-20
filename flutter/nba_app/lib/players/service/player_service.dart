@@ -11,20 +11,20 @@ class PlayerService {
 
   /// Get all players
   getAllPlayers() async {
-    try {
-      final response = await _dio.get('/players');
-      return response.data;
-    } catch (e) {
-      print(e);
-    }
+    final response = await _dio.get('/players');
+
+    return response.data;
   }
 
   /// Fetch players by search
-  getPlayersBySearch(String search) async {
+  getPlayersBySearch(String name) async {
     try {
-      final response = await _dio.get('/players', queryParameters: {
-        'search': search,
-      });
+      final response = await _dio.get(
+        '/players',
+        queryParameters: {'search': name},
+      );
+
+      print(response.data);
       return response.data;
     } catch (e) {
       print(e);
