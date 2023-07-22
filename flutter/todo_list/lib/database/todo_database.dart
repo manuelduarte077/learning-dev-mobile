@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -25,25 +26,30 @@ class DatabaseProvider {
   Future<Database> createDatabase() async {
     Directory docDirectory = await getApplicationDocumentsDirectory();
 
-    String path = '${docDirectory.path}todo.db';
+    String path = join(docDirectory.path, 'todo.db');
+
+    await deleteDatabase(path);
 
     final database = await openDatabase(
       path,
-      version: 1,
-      onCreate: (db, version) {
-        db.execute(
-          'CREATE TABLE Todos('
-          'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-          'title TEXT,'
-          'description TEXT,'
-          'isDone INTEGER,'
-          ')',
-        );
+      version: 2,
+      onCreate: (db, version) async {
+        await db.execute(tableTodo);
       },
       onUpgrade: (db, oldVersion, newVersion) {
         if (newVersion > oldVersion) {}
       },
     );
+
     return database;
   }
+
+  static const tableTodo = """
+          CREATE TABLE IF NOT EXISTS Todos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            description TEXT,
+            isDone INTEGER
+          );
+      """;
 }
