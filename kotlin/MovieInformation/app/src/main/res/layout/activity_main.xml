@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="@font/roboto_black"
+        android:text="Search Movie"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Here you can search the movie by title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <!--Search-->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/et_design"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Search a title"
+        android:paddingHorizontal="10dp"
+        android:textColorHint="@color/color_grey"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+
+    <!--Button-->
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/color_red"
+        android:fontFamily="@font/roboto_black"
+        android:text="Search"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etSearch" />
+
+
+    <!--CardView-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="20dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSearch"
+        app:layout_constraintWidth_percent="0.6">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--    Movie cover    -->
+
+            <ImageView
+                android:id="@+id/movieCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <!--    Icon Show More    -->
+            <ImageView
+                android:id="@+id/showMore"
+                android:layout_width="71dp"
+                android:layout_height="75dp"
+                android:src="@drawable/ic_expand_more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!--    Movie Title    -->
+            <TextView
+                android:id="@+id/movieTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="Movie Title"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--    Movie Description    -->
+            <TextView
+                android:id="@+id/movieDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Movie Description"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/movieTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
