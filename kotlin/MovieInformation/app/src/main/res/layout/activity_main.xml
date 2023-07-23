@@ -41,9 +41,12 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/et_design"
+        android:ellipsize="end"
         android:fontFamily="@font/roboto_regular"
         android:hint="Search a title"
+        android:lines="1"
         android:paddingHorizontal="10dp"
+        android:textColor="@color/white"
         android:textColorHint="@color/color_grey"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/tvDescription" />
@@ -67,9 +70,11 @@
 
     <!--CardView-->
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginVertical="20dp"
+        android:visibility="invisible"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
