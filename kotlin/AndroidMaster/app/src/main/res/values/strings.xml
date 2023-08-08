@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidMaster</string>
+    <string name="pulsame">Pulsame</string>
+    <string name="escribe_tu_nombre">Escribe tu nombre</string>
 </resources>

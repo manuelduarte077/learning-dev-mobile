@@ -1,4 +1,4 @@
-package com.manuelduarte077.androidmaster
+package com.manuelduarte077.androidmaster.excercies
 
 fun main() {
 

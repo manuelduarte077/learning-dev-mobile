@@ -32,7 +32,7 @@ fun main() {
         }."
     )
     println(
-        "The movie ticket price for a person aged Sadult is \$${
+        "The movie ticket price for a person aged $adult is \$${
             printTicketPrice(
                 adult,
                 isMonday
