@@ -1,4 +1,4 @@
-package com.example.ecommerce
+package com.manuelduarte077.cartbucket
 
 import io.flutter.embedding.android.FlutterActivity
 
