@@ -27,25 +27,25 @@ final activities = [
   {
     'name': 'Volcán Tajumulco',
     'duration': '2 días',
-    'price': 'Q.325',
+    'price': 'USD.325',
     'image': 'assets/image5.jpeg'
   },
   {
     'name': 'Cultura en el altiplano',
     'duration': '3 días',
-    'price': 'Q.570',
+    'price': 'USD.570',
     'image': 'assets/image6.jpeg'
   },
   {
     'name': 'Camping Tecpán',
     'duration': '3 días',
-    'price': 'Q.430',
+    'price': 'USD.430',
     'image': 'assets/image7.jpeg'
   },
   {
     'name': 'Sendero en Todos Santos',
     'duration': '1 día',
-    'price': 'Q.270',
+    'price': 'USD.270',
     'image': 'assets/image8.jpeg'
   },
 ];
