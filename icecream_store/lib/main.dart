@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icecream_store/app_theme.dart';
+import 'package:icecream_store/screens/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,16 +14,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       theme: AppTheme().themeData,
       themeMode: ThemeMode.system,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Ice Cream'),
-        ),
-        body: const SafeArea(
-          child: Center(
-            child: Text('Hello World!'),
-          ),
-        ),
-      ),
+      home: const HomeScreen(),
     );
   }
 }
