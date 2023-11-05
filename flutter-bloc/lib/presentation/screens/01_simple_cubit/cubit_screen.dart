@@ -10,7 +10,7 @@ class CubitScreen extends StatelessWidget {
         title: const Text('Cubit'),
       ),
       body: const Center(
-        child: Text('Fernando Herrera'),
+        child: Text('Cubit'),
       ),
     );
   }

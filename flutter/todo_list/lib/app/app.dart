@@ -59,6 +59,7 @@ class TodoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     todoBloc.getAllTodos();
+
     return StreamBuilder<List<TodoModel>>(
       stream: todoBloc.allTodos,
       builder: (context, snapshot) {
