@@ -127,7 +127,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
     try {
       final settings = pixelpay.Settings();
-      settings.setupSandbox();
+      // settings.setupSandbox();
       settings.setupLanguage('es');
 
       final sale = pixelpay.SaleTransaction();
