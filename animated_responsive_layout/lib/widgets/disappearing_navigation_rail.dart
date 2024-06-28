@@ -27,6 +27,7 @@ class DisappearingNavigationRail extends StatelessWidget {
       animation: railAnimation,
       backgroundColor: backgroundColor,
       child: NavigationRail(
+        extended: true,
         selectedIndex: selectedIndex,
         backgroundColor: backgroundColor,
         onDestinationSelected: onDestinationSelected,
