@@ -5,9 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,6 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.FirebaseUser
@@ -31,7 +31,6 @@ fun App() {
 	}
 }
 
-
 @Composable
 fun AuthScreen() {
 
@@ -41,59 +40,57 @@ fun AuthScreen() {
 	var userEmail by remember { mutableStateOf("") }
 	var userPassword by remember { mutableStateOf("") }
 
-	Scaffold {
-		if (firebaseUser == null) {
-			Column(
-				modifier = Modifier.fillMaxSize(),
-				verticalArrangement = Arrangement.Center,
-				horizontalAlignment = Alignment.CenterHorizontally
-			) {
-				TextField(
-					value = userEmail,
-					onValueChange = { userEmail = it },
-					label = { Text("Email") },
-				)
-				Spacer(modifier = Modifier.height(16.dp))
-				TextField(
-					value = userPassword,
-					onValueChange = { userPassword = it },
-					label = { Text("Password") },
-				)
+	if (firebaseUser == null) {
+		Column(
+			modifier = Modifier.fillMaxSize(),
+			verticalArrangement = Arrangement.Center,
+			horizontalAlignment = Alignment.CenterHorizontally
+		) {
+			TextField(
+				value = userEmail,
+				onValueChange = { userEmail = it },
+				label = { Text("Email") },
+			)
+			Spacer(modifier = Modifier.height(16.dp))
+			TextField(
+				value = userPassword,
+				onValueChange = { userPassword = it },
+				label = { Text("Password") },
+				visualTransformation = PasswordVisualTransformation()
+			)
 
-				Spacer(modifier = Modifier.height(16.dp))
-				Button(
-					onClick = {
-						scope.launch {
-							try {
-								auth.createUserWithEmailAndPassword(userEmail, userPassword)
-							} catch (e: Exception) {
-								auth.signInWithEmailAndPassword(userEmail, userPassword)
-							}
-						}
-					},
-					enabled = userEmail.isNotEmpty() && userPassword.isNotEmpty()
-				) {
-					Text("Sign In")
-				}
-			}
-		} else {
-			Column(
-				modifier = Modifier.fillMaxSize(),
-				verticalArrangement = Arrangement.Center,
-				horizontalAlignment = Alignment.CenterHorizontally
-			) {
-				Text(text = firebaseUser?.uid ?: "Unknown ID")
-				Spacer(modifier = Modifier.height(24.dp))
-				Button(
-					onClick = {
-						scope.launch {
-							auth.signOut()
-							firebaseUser = auth.currentUser
+			Spacer(modifier = Modifier.height(16.dp))
+			Button(
+				onClick = {
+					scope.launch {
+						try {
+							auth.createUserWithEmailAndPassword(userEmail, userPassword)
+						} catch (e: Exception) {
+							auth.signInWithEmailAndPassword(userEmail, userPassword)
 						}
 					}
-				) {
-					Text(text = "Sign out")
+				},
+			) {
+				Text("Sign In")
+			}
+		}
+	} else {
+		Column(
+			modifier = Modifier.fillMaxSize(),
+			verticalArrangement = Arrangement.Center,
+			horizontalAlignment = Alignment.CenterHorizontally
+		) {
+			Text(text = firebaseUser?.uid ?: "Unknown ID")
+			Spacer(modifier = Modifier.height(24.dp))
+			Button(
+				onClick = {
+					scope.launch {
+						auth.signOut()
+						firebaseUser = auth.currentUser
+					}
 				}
+			) {
+				Text(text = "Sign out")
 			}
 		}
 	}
