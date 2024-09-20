@@ -10,19 +10,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Comment Name" />
+        android:text="@string/comment_name" />
 
     <TextView
         android:id="@+id/commentEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email" />
+        android:text="@string/email" />
 
     <TextView
         android:id="@+id/commentBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comment body"
+        android:text="@string/comment_body"
         android:layout_marginTop="4dp" />
 
 </LinearLayout>
