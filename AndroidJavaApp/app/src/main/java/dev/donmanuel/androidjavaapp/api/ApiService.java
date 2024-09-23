@@ -15,5 +15,4 @@ public interface ApiService {
 
     @GET("posts/{postId}/comments")
     Call<List<Comment>> getComments(@Path("postId") int postId);
-
 }
