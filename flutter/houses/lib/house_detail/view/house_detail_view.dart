@@ -12,9 +12,8 @@ class HouseDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedHouse = context.select(
-      (HomeBloc bloc) => bloc.state.selectedHouse,
-    )!;
+    final selectedHouse =
+        context.select((HomeBloc bloc) => bloc.state.selectedHouse)!;
 
     return Scaffold(
       body: SizedBox(

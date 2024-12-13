@@ -18,7 +18,6 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Houses',
         theme: Theme.of(context).copyWith(
-          useMaterial3: true,
           textTheme: GoogleFonts.poppinsTextTheme().apply(
             bodyColor: Colors.black,
             displayColor: Colors.black,

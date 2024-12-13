@@ -23,6 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     final savedHomeIds = await sharedPreferenceService.getSavedHouses();
     var updatedHouseModel = state.houseModel;
+
     if (savedHomeIds.isNotEmpty) {
       updatedHouseModel = state.houseModel.map((house) {
         if (savedHomeIds.contains(house.id)) {

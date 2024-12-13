@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:houses/constants/color_constants.dart';
-import 'package:houses/gen/assets.gen.dart';
 import 'package:houses/home/home.dart';
 import 'package:houses/house_detail/house_detail.dart';
 import 'package:houses/utils/utils.dart';
@@ -15,31 +14,14 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Container(
-          decoration: const BoxDecoration(
-            color: ColorConstants.offWhite,
-            shape: BoxShape.circle,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Image.asset(
-              Assets.menu.path,
-              height: 18,
-            ),
-          ),
+        title: Text(
+          'Houses',
+          style: context.textTheme.headlineLarge
+              ?.copyWith(fontSize: 30, fontWeight: FontWeight.w600),
         ),
         actions: [
-          Container(
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(241, 241, 241, 1),
-              shape: BoxShape.circle,
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Icon(
-                Icons.search,
-              ),
-            ),
+          Icon(
+            Icons.search,
           ),
           const SizedBox(width: 12),
         ],
