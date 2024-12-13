@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 20),
                 FilledButton.icon(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    backgroundColor: WidgetStateProperty.all(Colors.blue),
                   ),
                   onPressed: () async {
                     double batteryLevel =
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 20),
                 FilledButton.icon(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                    backgroundColor: WidgetStateProperty.all(Colors.green),
                   ),
                   onPressed: () async {
                     bool isBatteryCharging =
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 20),
                 FilledButton.icon(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                    backgroundColor: WidgetStateProperty.all(Colors.red),
                   ),
                   onPressed: () async {
                     String timeLeft =

@@ -14,13 +14,13 @@ class _WeatherPageState extends State<WeatherPage> {
     return await CallToApi().callWeatherAPi(isCurrentCity, cityName);
   }
 
-  TextEditingController textController = TextEditingController(text: "");
+  TextEditingController textController = TextEditingController(text: '');
   Future<WeatherModel>? _myData;
 
   @override
   void initState() {
     setState(() {
-      _myData = getData(true, "Managua");
+      _myData = getData(true, 'Managua');
     });
     super.initState();
   }
@@ -31,7 +31,7 @@ class _WeatherPageState extends State<WeatherPage> {
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[300],
         elevation: 0,
-        title: const Text("Weather", style: TextStyle(color: Colors.white)),
+        title: const Text('Weather', style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       body: FutureBuilder<WeatherModel>(
@@ -50,7 +50,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         child: TextField(
                           controller: textController,
                           decoration: const InputDecoration(
-                            hintText: "Search",
+                            hintText: 'Search',
                           ),
                         ),
                       ),
@@ -92,7 +92,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       ),
                     ),
                     const Text(
-                      "°C",
+                      '°C',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -117,7 +117,7 @@ class _WeatherPageState extends State<WeatherPage> {
               ],
             );
           } else if (snapshot.hasError) {
-            return const Text("Error");
+            return const Text('Error');
           }
           return const CircularProgressIndicator.adaptive();
         },

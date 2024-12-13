@@ -12,7 +12,7 @@ class CallToApi {
       final url = Uri.https(
         'api.openweathermap.org',
         '/data/2.5/weather',
-        {'q': cityName, "units": "metric", "appid": apiKey},
+        {'q': cityName, 'units': 'metric', 'appid': apiKey},
       );
 
       final http.Response response = await http.get(url);
